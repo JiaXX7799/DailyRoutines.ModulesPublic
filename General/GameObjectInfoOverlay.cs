@@ -27,7 +27,7 @@ public class GameObjectInfoOverlay : DailyModuleBase
 
     protected override void Init()
     {
-        ModuleConfig = LoadConfig<Config>();
+        ModuleConfig = LoadConfig<Config>() ?? new Config();
         FrameworkManager.Register(OnUpdate);
 
         Overlay ??= new Overlay(this);
@@ -331,7 +331,7 @@ public class GameObjectInfoOverlay : DailyModuleBase
             ObjectKind = obj.ObjectKind,
             Position = obj.Position,
             Rotation = obj.Rotation,
-            Distance = distance,
+            Distance = distance
         };
 
         if (obj is IBattleChara battleChara)
